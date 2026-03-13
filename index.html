@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia en M&uacute;sica &#128156;</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lilac: { 50: '#fcfaff', 100: '#f5eeff', 200: '#eaddff', 300: '#d5bfff', 400: '#b886fb', 500: '#9d4edd', 600: '#7b2cbf', 700: '#5a189a' }
+                    },
+                    fontFamily: { cursive: ['Dancing Script', 'cursive'], sans: ['Poppins', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #f5eeff;
+            background-image: radial-gradient(#d5bfff 1.5px, transparent 1.5px);
+            background-size: 50px 50px;
+            overflow-x: hidden;
+        }
+
+        /* Estilo Instax / Polaroid */
+        .instax-card {
+            background: white;
+            padding: 12px;
+            padding-bottom: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 20;
+        }
+
+        .instax-card:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 20px 30px -5px rgba(157, 78, 221, 0.3);
+            z-index: 40;
+        }
+
+        .instax-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f3f4f6;
+            object-fit: cover;
+            border: 1px solid rgba(0,0,0,0.03);
+            margin-bottom: 12px;
+        }
+
+        /* Rotaciones para el efecto de fotos pegadas */
+        .rot-l { transform: rotate(-2.5deg); }
+        .rot-r { transform: rotate(2.5deg); }
+        .rot-s { transform: rotate(-1.5deg); }
+
+        /* Contenedor de elementos flotantes */
+        .bg-decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.35;
+            animation: float-around infinite ease-in-out;
+        }
+
+        @keyframes float-around {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(10deg); }
+            66% { transform: translate(-20px, -100px) rotate(-10deg); }
+        }
+
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.5rem;
+            color: #b886fb;
+            animation: floatUp 1s ease-out forwards;
+            z-index: 100;
+        }
+        
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-120px) scale(1.8); opacity: 0; }
+        }
+
+        .audio-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #9d4edd;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        @media (max-width: 640px) {
+            .instax-card { transform: rotate(0deg) !important; }
+        }
+
+        .spotify-btn-main {
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            background: #1DB954;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 pb-20">
+
+    <!-- Fondo Decorativo Lleno -->
+    <div class="bg-decorations">
+        <!-- Avioncitos -->
+        <div class="floating-icon text-lilac-400 text-3xl" style="top: 15%; left: 10%; animation-duration: 12s;"><i class="fas fa-paper-plane"></i></div>
+        <div class="floating-icon text-lilac-500 text-2xl" style="top: 65%; left: 85%; animation-duration: 15s; animation-delay: 2s;"><i class="fas fa-paper-plane"></i></div>
+        <div class="floating-icon text-lilac-400 text-4xl" style="top: 85%; left: 15%; animation-duration: 18s; animation-delay: 5s;"><i class="fas fa-paper-plane"></i></div>
+        <!-- Corazones -->
+        <div class="floating-icon text-lilac-300 text-2xl" style="top: 40%; left: 5%; animation-duration: 10s;"><i class="fas fa-heart"></i></div>
+        <div class="floating-icon text-lilac-400 text-3xl" style="top: 25%; left: 80%; animation-duration: 14s; animation-delay: 1s;"><i class="fas fa-heart"></i></div>
+        <div class="floating-icon text-lilac-200 text-4xl" style="top: 75%; left: 50%; animation-duration: 11s; animation-delay: 3s;"><i class="fas fa-heart"></i></div>
+        <div class="floating-icon text-lilac-300 text-xl" style="top: 10%; left: 90%; animation-duration: 9s;"><i class="fas fa-heart"></i></div>
+        <!-- Estrellas -->
+        <div class="floating-icon text-lilac-400 text-2xl" style="top: 50%; left: 90%; animation-duration: 13s;"><i class="fas fa-star"></i></div>
+        <div class="floating-icon text-lilac-200 text-3xl" style="top: 5%; left: 45%; animation-duration: 16s;"><i class="fas fa-star"></i></div>
+        <div class="floating-icon text-lilac-300 text-lg" style="top: 90%; left: 70%; animation-duration: 14s; animation-delay: 4s;"><i class="fas fa-star"></i></div>
+    </div>
+
+    <main class="max-w-5xl mx-auto px-4 pt-12 relative z-10">
+        
+        <!-- Encabezado -->
+        <header class="max-w-2xl mx-auto text-center mb-16 bg-white p-8 shadow-xl transform -rotate-1 border-b-4 border-lilac-300 rounded-sm relative">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 text-lilac-400 text-3xl"><i class="fas fa-thumbtack"></i></div>
+            
+            <div class="text-lilac-500 text-4xl mb-4"><i class="fas fa-heart"></i></div>
+            <h1 class="font-cursive text-5xl text-lilac-800 mb-4">Para mi persona favorita</h1>
+           
+			<p class="text-lg text-gray-600 font-light leading-relaxed mb-8">
+                A veces siento que las palabras no me alcanzan para decirte todo lo que siento. Por eso recurro a la m&uacute;sica. En cada canci&oacute;n que te dedico hay un pedacito de lo que llevo por dentro. Me gusta pensar que, cuando las escuches, puedas sentir lo mismo que siento yo por ti. Porque as&iacute; como me gusta la m&uacute;sica, me gustas t&uacute;  ... y mucho. Y quiz&aacute;s la mejor manera de mostrarlo es a trav&eacute;s de esas canciones que dicen lo que mi coraz&oacute;n a veces no sabe c&oacute;mo explicar. &#128156;
+            </p>
+          <p class="text-lg text-gray-600 font-light leading-relaxed mb-8">
+                Cada foto es un recuerdo, y cada canci&oacute;n una parte de nuestra historia. Escucha lo que mi coraz&oacute;n dice por ti.
+            </p>
+            
+        </header>
+
+        <!-- Grid de Fotos Instax -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
+            
+            <!-- Canci車n 1 -->
+            <div class="instax-card rot-l" id="card1">
+                <img src="1.jpg" alt="Foto 1" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">Risk it all</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">Bruno Mars</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(1, 'Risk it all Bruno mars')" id="btn1" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/Risk%20it%20all%20Bruno%20mars" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress1" class="audio-progress"></div>
+            </div>
+
+            <!-- Canci車n 2 -->
+            <div class="instax-card rot-r" id="card2">
+                <img src="2.jpg" alt="Foto 2" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">Promete</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">Andr&eacute;s Cepeda</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(2, 'Promete Andres Cepeda')" id="btn2" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/Promete%20Andres%20Cepeda" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress2" class="audio-progress"></div>
+            </div>
+
+            <!-- Canci車n 3 -->
+            <div class="instax-card rot-s" id="card3">
+                <img src="3.jpg" alt="Foto 3" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">Say you won't let go</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">James Arthur</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(3, 'Say you wont let go james arthur')" id="btn3" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/Say%20you%20won't%20let%20go%20james%20arthur" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress3" class="audio-progress"></div>
+            </div>
+
+            <!-- Canci車n 4 -->
+            <div class="instax-card rot-l" id="card4">
+                <img src="4.jpg" alt="Foto 4" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1474552226712-ac0f0961a954?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">All my love</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">Coldplay</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(4, 'All my love Coldplay')" id="btn4" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/All%20my%20love%20Coldplay" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress4" class="audio-progress"></div>
+            </div>
+
+            <!-- Canci車n 5 -->
+            <div class="instax-card rot-r" id="card5">
+                <img src="5.jpg" alt="Foto 5" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1522673607200-1648482ce486?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">A tu ladito</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">Rafa P&eacute;rez</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(5, 'A tu ladito Rafa Perez')" id="btn5" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/A%20tu%20ladito%20Rafa%20Perez" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress5" class="audio-progress"></div>
+            </div>
+
+            <!-- Canci車n 6 -->
+            <div class="instax-card rot-s" id="card6">
+                <img src="6.jpg" alt="Foto 6" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1516589174184-c685245d4e63?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">En guerra</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">Sebasti&aacute;n Yatra</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(6, 'En guerra Sebastian Yatra')" id="btn6" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/En%20guerra%20Sebastian%20Yatra" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress6" class="audio-progress"></div>
+            </div>
+
+            <!-- Canci車n 7 -->
+            <div class="instax-card rot-l" id="card7">
+                <img src="7.jpg" alt="Foto 7" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">Anyone</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">Justin Bieber</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(7, 'Anyone Justin Bieber')" id="btn7" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/Anyone%20Justin%20Bieber" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress7" class="audio-progress"></div>
+            </div>
+
+            <!-- Canci車n 8 -->
+            <div class="instax-card rot-r" id="card8">
+                <img src="8.jpg" alt="Foto 8" class="instax-photo" onerror="this.src='https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&w=500'">
+                <div class="flex items-center justify-between px-1">
+                    <div class="overflow-hidden">
+                        <h3 class="font-cursive text-2xl text-gray-800 truncate">Yellow</h3>
+                        <p class="text-xs text-lilac-500 font-sans tracking-wide uppercase font-bold">Coldplay</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="playPreview(8, 'Yellow Coldplay')" id="btn8" class="w-10 h-10 rounded-full bg-lilac-100 text-lilac-600 flex items-center justify-center hover:bg-lilac-200 transition-colors">
+                            <i class="fas fa-play ml-0.5"></i>
+                        </button>
+                        <a href="https://open.spotify.com/search/Yellow%20Coldplay" target="_blank" class="w-10 h-10 rounded-full bg-green-50 text-green-500 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors">
+                            <i class="fab fa-spotify text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="progress8" class="audio-progress"></div>
+            </div>
+
+        </div>
+
+        <div class="mt-24 text-center">
+             <p class="font-cursive text-4xl text-lilac-600 drop-shadow-sm mb-10">Eres mi mejor aventura. &#128156;</p>
+             <a href="https://open.spotify.com/playlist/1YC6GTqjoiy2u9BtHoG7Rr?si=OQrWohBKQSWa4XJLs0iAag" target="_blank" class="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-bold text-lg transition-all hover:underline">
+                <i class="fab fa-spotify"></i> Abrir playlist completa en Spotify
+             </a>
+        </div>
+    </main>
+
+    <script>
+        // Corazones al hacer clic
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('button') || e.target.closest('a')) return;
+            const heart = document.createElement('div');
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.className = 'click-heart';
+            heart.style.left = `${e.clientX - 12}px`;
+            heart.style.top = `${e.clientY - 12}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        });
+
+        // --- SISTEMA DE AUDIO ---
+        const audioPlayer = new Audio();
+        let currentPlayingId = null;
+        let progressInterval;
+
+        audioPlayer.addEventListener('ended', resetUI);
+        audioPlayer.addEventListener('pause', updateIcons);
+        audioPlayer.addEventListener('play', updateIcons);
+
+        async function playPreview(id, query) {
+            const btn = document.getElementById(`btn${id}`);
+            
+            if (currentPlayingId === id) {
+                if (audioPlayer.paused) audioPlayer.play();
+                else audioPlayer.pause();
+                return;
+            }
+
+            resetUI();
+            currentPlayingId = id;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+            try {
+                const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=1`);
+                const data = await response.json();
+                
+                if (data.results && data.results.length > 0 && data.results[0].previewUrl) {
+                    audioPlayer.src = data.results[0].previewUrl;
+                    await audioPlayer.play();
+                    startProgressBar();
+                } else {
+                    btn.innerHTML = '<i class="fas fa-exclamation-triangle text-red-400"></i>';
+                }
+            } catch (e) {
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle text-red-400"></i>';
+            }
+        }
+
+        function updateIcons() {
+            const btn = document.getElementById(`btn${currentPlayingId}`);
+            if (btn) {
+                btn.innerHTML = audioPlayer.paused ? '<i class="fas fa-play ml-0.5"></i>' : '<i class="fas fa-pause"></i>';
+            }
+        }
+
+        function resetUI() {
+            stopProgressBar();
+            for(let i=1; i<=8; i++) {
+                const btn = document.getElementById(`btn${i}`);
+                const progress = document.getElementById(`progress${i}`);
+                if (btn) btn.innerHTML = '<i class="fas fa-play ml-0.5"></i>';
+                if (progress) progress.style.width = '0%';
+            }
+            audioPlayer.pause();
+            currentPlayingId = null;
+        }
+
+        function startProgressBar() {
+            stopProgressBar();
+            progressInterval = setInterval(() => {
+                if (!currentPlayingId || !audioPlayer.duration) return;
+                const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                const bar = document.getElementById(`progress${currentPlayingId}`);
+                if (bar) bar.style.width = `${progress}%`;
+            }, 100);
+        }
+
+        function stopProgressBar() { if (progressInterval) clearInterval(progressInterval); }
+    </script>
+</body>
+</html>
